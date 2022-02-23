@@ -18,6 +18,7 @@ package controllers
 
 import (
 	"context"
+	"go.uber.org/zap"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -47,7 +48,7 @@ type GuestbookReconciler struct {
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.11.0/pkg/reconcile
 func (r *GuestbookReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	logger := log.FromContext(ctx)
-	logger.Info(req.String())
+	logger.Info("Reconcile", zap.String("Request: ", req.String()))
 	// TODO(user): your logic here
 
 	return ctrl.Result{}, nil
@@ -56,7 +57,7 @@ func (r *GuestbookReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 // SetupWithManager sets up the controller with the Manager.
 func (r *GuestbookReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	logger := log.FromContext(context.Background())
-	logger.Info("SetupWithManager ")
+	logger.Info("SetupWithManager", zap.String("Manager: ", "started"))
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&webappv1.Guestbook{}).
 		Complete(r)
