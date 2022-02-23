@@ -57,7 +57,7 @@ func (r *GuestbookReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 // SetupWithManager sets up the controller with the Manager.
 func (r *GuestbookReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	logger := log.FromContext(context.Background())
-	logger.Info("Reconcile ", map[string]interface{}{"Manager : ": mgr})
+	logger.Info("SetupWithManager ")
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&webappv1.Guestbook{}).
 		Complete(r)
