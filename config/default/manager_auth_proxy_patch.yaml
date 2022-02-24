@@ -11,8 +11,8 @@ spec:
       containers:
       - name: kube-rbac-proxy
         #image: gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0
-        image: ~/show-istio-repo.sh kubebuilder gz | grep kb_rbac_proxy
-        #image: registry.cn-hangzhou.aliyuncs.com/kubenode/kube-rbac-proxy:v0.8.0
+        #image: ~/show-istio-repo.sh kubebuilder gz | grep kb_rbac_proxy
+        image:  bitnami/kube-rbac-proxy:latest
         imagePullPolicy: IfNotPresent
         args:
         - "--secure-listen-address=0.0.0.0:8443"
