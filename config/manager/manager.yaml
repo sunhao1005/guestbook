@@ -31,8 +31,8 @@ spec:
         - /manager
         args:
         - --leader-elect
-        image: 17719317036/guestbook:v2
-        #imagePullPolicy: IfNotPresent
+        image: controller:latest
+        imagePullPolicy: IfNotPresent
         name: manager
         securityContext:
           allowPrivilegeEscalation: false
